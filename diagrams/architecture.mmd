@@ -1,0 +1,39 @@
+```mermaid
+graph TD
+    subgraph OnPrem["On-Premises"]
+        HQ[Headquarters]
+        Branch1[Branch Office 1]
+        Branch2[Branch Office 2]
+        DC[Data Center]
+    end
+
+    subgraph AWS["AWS Cloud"]
+        TGW[Transit Gateway]
+        
+        subgraph VPCs["VPCs"]
+            Prod[Production VPC]
+            Dev[Development VPC]
+            Shared[Shared Services VPC]
+        end
+        
+        DX[Direct Connect Gateway]
+        VPN[Site-to-Site VPN]
+    end
+
+    subgraph OtherCloud["Other Clouds"]
+        Azure[Azure VNet]
+        GCP[GCP VPC]
+    end
+
+    HQ --> DX
+    DC --> DX
+    DX --> TGW
+    Branch1 --> VPN
+    Branch2 --> VPN
+    VPN --> TGW
+    TGW --> Prod
+    TGW --> Dev
+    TGW --> Shared
+    TGW --> Azure
+    TGW --> GCP
+```

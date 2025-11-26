@@ -1,0 +1,25 @@
+```mermaid
+sequenceDiagram
+    participant Branch as Branch Office
+    participant VPN as VPN Gateway
+    participant TGW as Transit Gateway
+    participant FW as Network Firewall
+    participant App as Application VPC
+
+    Branch->>VPN: Establish IPsec tunnel
+    VPN-->>Branch: Tunnel established
+    Branch->>VPN: BGP peering request
+    VPN->>TGW: Propagate routes
+    TGW-->>VPN: Routes accepted
+    VPN-->>Branch: BGP established
+
+    Note over Branch,App: Application traffic flow
+    Branch->>VPN: Application request
+    VPN->>TGW: Route to destination
+    TGW->>FW: Inspect traffic
+    FW->>App: Forward if allowed
+    App-->>FW: Response
+    FW-->>TGW: Return traffic
+    TGW-->>VPN: Route back
+    VPN-->>Branch: Deliver response
+```

@@ -1,0 +1,40 @@
+```mermaid
+graph LR
+    subgraph Sites["Remote Sites"]
+        HQ[Headquarters]
+        Branches[Branch Offices]
+        Remote[Remote Workers]
+    end
+
+    subgraph Connect["Connectivity"]
+        DX[Direct Connect]
+        VPN[Site-to-Site VPN]
+        ClientVPN[Client VPN]
+    end
+
+    subgraph Hub["Network Hub"]
+        TGW[Transit Gateway]
+        RouteTable[Route Tables]
+        Firewall[Network Firewall]
+    end
+
+    subgraph Destinations["Destinations"]
+        AWS_VPCs[AWS VPCs]
+        Azure[Azure]
+        GCP[GCP]
+        Internet[Internet]
+    end
+
+    HQ --> DX
+    Branches --> VPN
+    Remote --> ClientVPN
+    DX --> TGW
+    VPN --> TGW
+    ClientVPN --> TGW
+    TGW --> RouteTable
+    RouteTable --> Firewall
+    Firewall --> AWS_VPCs
+    Firewall --> Azure
+    Firewall --> GCP
+    Firewall --> Internet
+```
