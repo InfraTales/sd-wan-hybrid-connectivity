@@ -114,4 +114,4 @@ Common issues and resolutions for the **SD-WAN Hybrid Connectivity** architectur
 - Test alternate paths
 - Contact ISP if external issue
 
-> For architecture details, see `ARCHITECTURE.md`.
+> For architecture details, see the project README.

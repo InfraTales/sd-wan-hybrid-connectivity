@@ -42,4 +42,4 @@ At production scale (multi-site enterprise), the architecture typically costs:
 
 ## Related Documentation
 
-See `ARCHITECTURE.md` for service details and `DEPLOYMENT.md` for configuration options.
+See the project README for architecture details.md` for configuration options.
